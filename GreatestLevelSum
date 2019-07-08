@@ -1,0 +1,34 @@
+public int greatestLevelSum() {
+        Queue<Node> queue = new LinkedList<>();
+        int highestSum = this.getRoot().getVal();
+        int sum = 0;
+        int length = 1;
+
+        queue.add(this.getRoot());
+        while (!queue.isEmpty()) {
+            for (int i = 0; i < length; i++) {
+
+                if (queue.peek().left != null) {
+                    sum += queue.peek().left.getVal();
+                    queue.add(queue.peek().left);
+                }
+
+                if (queue.peek().right != null) {
+                    sum += queue.peek().right.getVal();
+                    queue.add(queue.peek().right);
+
+                }
+                queue.poll();
+            }
+
+            length = queue.size();
+            if (highestSum < sum) {
+                highestSum = sum;
+                sum = 0;
+            } else {
+                sum = 0;
+            }
+        }
+
+        return highestSum;
+    }
