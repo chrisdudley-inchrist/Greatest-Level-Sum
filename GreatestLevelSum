@@ -24,10 +24,9 @@ public int greatestLevelSum() {
             length = queue.size();
             if (highestSum < sum) {
                 highestSum = sum;
-                sum = 0;
-            } else {
-                sum = 0;
-            }
+            } 
+            sum = 0;
+            
         }
 
         return highestSum;
